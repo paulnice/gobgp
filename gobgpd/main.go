@@ -57,6 +57,8 @@ func main() {
 		os.Exit(1)
 	}
 
+	log.Infof("It's changed version")
+	
 	if opts.CPUs == 0 {
 		runtime.GOMAXPROCS(runtime.NumCPU())
 	} else {
@@ -179,8 +181,7 @@ func main() {
 				if opts.GracefulRestart {
 					for i, n := range added {
 						if n.GracefulRestart.Config.Enabled {
-							added[i].GracefulRestart.State.LocalRestarting = true
-							log.Infof("!!!!!!! GR enabled i=%v n=%v", i, n)
+							added[i].GracefulRestart.State.LocalRestarting = true							
 						}
 					}
 				}
