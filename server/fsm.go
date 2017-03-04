@@ -878,6 +878,8 @@ func (h *FSMHandler) opensent() (bgp.FSMState, FsmStateReason) {
 						// To re-establish the session with its peer, the Restarting Speaker
 						// MUST set the "Restart State" bit in the Graceful Restart Capability
 						// of the OPEN message.
+						log.Info("Restart Flag=%v", cap.Flags)
+						cap.Flags = cap.Flags | 0x08
 						if fsm.pConf.GracefulRestart.State.PeerRestarting && cap.Flags&0x08 == 0 {
 							log.WithFields(log.Fields{
 								"Topic": "Peer",
