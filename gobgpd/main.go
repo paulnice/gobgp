@@ -180,6 +180,7 @@ func main() {
 					for i, n := range added {
 						if n.GracefulRestart.Config.Enabled {
 							added[i].GracefulRestart.State.LocalRestarting = true
+							log.Infof("!!!!!!! GR enabled i=%v n=%v", i, n)
 						}
 					}
 				}
